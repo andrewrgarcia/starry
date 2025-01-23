@@ -6,13 +6,14 @@ from sklearn.inspection import DecisionBoundaryDisplay
 from sklearn.preprocessing import LabelEncoder
 import argparse
 
-def plot_decision_boundary(filename, classifier_type="logreg"):
+def plot_decision_boundary(filename, classifier_type="logreg", savefile=None):
     """
     Plots the decision boundary of a classifier (Logistic Regression or Decision Tree) on 2D data.
 
     Parameters:
         filename (str): Path to the CSV file containing the data.
         classifier_type (str): Type of classifier to use, either 'logreg' or 'dectree'.
+        savefile (str, optional): Path to save the plot as a PDF file. If None, the plot is displayed interactively.
 
     Returns:
         None
@@ -47,14 +48,21 @@ def plot_decision_boundary(filename, classifier_type="logreg"):
             c=color, label=label, edgecolor="k"
         )
 
-    # Add legend and show the plot
+    # Add legend
     plt.legend()
-    plt.show()
+
+    # Save or show the plot
+    if savefile:
+        plt.savefig(savefile, format="pdf")
+        print(f"Plot saved to {savefile}")
+    else:
+        plt.show()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Plot decision boundary using a classifier.")
     parser.add_argument("-f", "--file", type=str, default="drawn_points.csv", help="Path to the CSV file containing the data.")
     parser.add_argument("-c", "--classifier", type=str, default="logreg", choices=["logreg", "dectree"], help="Type of classifier to use: 'logreg' for Logistic Regression or 'dectree' for Decision Tree.")
+    parser.add_argument("-s", "--savefile", type=str, help="Path to save the plot as a PDF file.")
 
     args = parser.parse_args()
-    plot_decision_boundary(args.file, args.classifier)
+    plot_decision_boundary(args.file, args.classifier, args.savefile)
