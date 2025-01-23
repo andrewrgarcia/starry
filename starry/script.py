@@ -60,9 +60,26 @@ def plot_decision_boundary(filename, classifier_type="logreg", savefile=None):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Plot decision boundary using a classifier.")
-    parser.add_argument("-f", "--file", type=str, default="drawn_points.csv", help="Path to the CSV file containing the data.")
-    parser.add_argument("-c", "--classifier", type=str, default="logreg", choices=["logreg", "dectree"], help="Type of classifier to use: 'logreg' for Logistic Regression or 'dectree' for Decision Tree.")
-    parser.add_argument("-s", "--savefile", type=str, help="Path to save the plot as a PDF file.")
+    parser.add_argument(
+        "-f", "--file",
+        type=str,
+        default="drawn_points.csv",
+        help="Path to the CSV file containing the data (default: 'drawn_points.csv')."
+    )
+    parser.add_argument(
+        "-c", "--classifier",
+        type=str,
+        default="logreg",
+        choices=["logreg", "dectree"],
+        help="Type of classifier to use: 'logreg' for Logistic Regression or 'dectree' for Decision Tree. Default is 'logreg'."
+    )
+    parser.add_argument(
+        "-s", "--savefile",
+        type=str,
+        help="Path to save the plot as a PDF file. If not provided, the plot will be displayed interactively."
+    )
 
+    # Print help message if -h or --help is used
     args = parser.parse_args()
+
     plot_decision_boundary(args.file, args.classifier, args.savefile)
