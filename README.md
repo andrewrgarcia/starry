@@ -1,6 +1,6 @@
 # starry
 
-This repository contains Python code designed to complement the [Starry Data App](https://starrydata.vercel.app), a tool inspired by the [drawdata](https://github.com/koaning/drawdata) Python library, for interactively generating and visualizing datasets through a drawing interface. The script extends the functionality of the app by providing a way to visualize decision boundaries of classifiers using the generated datasets.
+This repository contains Python code designed to complement the [Starry Data App](https://starrydata.vercel.app), a tool inspired by the [drawdata](https://github.com/koaning/drawdata) Python library, for interactively generating and visualizing datasets through a drawing interface. The [script](https://raw.githubusercontent.com/andrewrgarcia/starry/refs/heads/main/starry/script.py) extends the functionality of the app by providing a way to visualize decision boundaries of classifiers using the generated datasets.
 
 ---
 
