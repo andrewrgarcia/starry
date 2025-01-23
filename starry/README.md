@@ -1,4 +1,6 @@
 
+# starry/script
+
 ```bash
 starry/
 ├── scripts/
