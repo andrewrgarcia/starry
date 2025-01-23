@@ -3,7 +3,7 @@
 
 ```bash
 starry/
-├── scripts/
+├── starry/
 │   ├── README
 │   └── script.py
 ├── README.md
