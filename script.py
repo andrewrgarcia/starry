@@ -21,9 +21,17 @@ def plot_decision_boundary(filename, classifier_type="logreg", savefile=None):
     # Load the data
     df = pd.read_csv(filename)
 
+    columns = list(df.columns)
+    print("Detected columns:", columns)
+
+    x_col = columns[1]
+    y_col = columns[2]
+    feature_col = columns[3]
+    color_col = columns[4] if len(columns) > 4 else None  
+
     # Prepare the data
-    X = df[['x', 'y']].values
-    y = LabelEncoder().fit_transform(df['feature'])  # Encode the 'feature' column into numerical labels
+    X = df[[x_col, y_col]].values
+    y = LabelEncoder().fit_transform(df[feature_col])  # Encode the 'feature' column into numerical labels
 
     # Choose classifier based on input
     if classifier_type == "logreg":
@@ -36,15 +44,16 @@ def plot_decision_boundary(filename, classifier_type="logreg", savefile=None):
     # Plot decision boundary
     disp = DecisionBoundaryDisplay.from_estimator(
         classifier, X, response_method="predict",
-        xlabel="x", ylabel="y",
+        xlabel=x_col, ylabel=y_col,
         alpha=0.5,
     )
 
     # Scatter plot with colors
-    for label, color in zip(df['feature'].unique(), df['color'].unique()):
-        mask = df['feature'] == label
+    for label in df[feature_col].unique():
+        mask = df[feature_col] == label
+        color = df.loc[mask, color_col].iloc[0] if color_col else "blue"
         disp.ax_.scatter(
-            df.loc[mask, 'x'], df.loc[mask, 'y'],
+            df.loc[mask, x_col], df.loc[mask, y_col],
             c=color, label=label, edgecolor="k"
         )
 
