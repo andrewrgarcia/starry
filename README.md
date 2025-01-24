@@ -3,7 +3,7 @@
 
 This repository contains a Python script designed to complement the [Starry Data App](https://starrydata.vercel.app), a tool inspired by the [drawdata](https://github.com/koaning/drawdata) Python library, for interactively generating and visualizing datasets through a drawing interface. 
 
-This script, [script](`script.py`), was adapted from examples on [sklearn.DecisionBoundaryDisplay's API](https://scikit-learn.org/stable/modules/generated/sklearn.inspection.DecisionBoundaryDisplay.html) extends the functionality of the app by providing a way to visualize decision boundaries of classifiers using the generated datasets. It allows users to:
+This script, [`script.py`](script.py), was adapted from examples on [sklearn.DecisionBoundaryDisplay's API](https://scikit-learn.org/stable/modules/generated/sklearn.inspection.DecisionBoundaryDisplay.html) extends the functionality of the app by providing a way to visualize decision boundaries of classifiers using the generated datasets. It allows users to:
 
 - Visualize **decision boundaries** for two classifiers: Logistic Regression and Decision Tree.
 - Accept datasets exported from the Starry Data App (CSV format).
